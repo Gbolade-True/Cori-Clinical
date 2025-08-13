@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+	/* Font Family */
+	--font-family-sans: "Montserrat", system-ui, sans-serif;
+
+	/* Colors */
+	--color-primary-default: #0c76d4;
+	--color-primary-1: #0c76d4;
+	--color-primary-2: #0b6cc1;
+	--color-primary-1-d: #0c76d4;
+	--color-primary-2-d: #0b6cc1;
+
+	--color-secondary-default: #ebedf0;
+	--color-secondary-1: #f7fafc;
+	--color-secondary-2: #dce0e5;
+	--color-secondary-1-d: #424b57;
+	--color-secondary-2-d: #485360;
+
+	--color-bg-default: #ecf3f8;
+	--color-bg-1: #ecf3f8;
+	--color-bg-2: #ffffff;
+	--color-bg-1-d: #19181b;
+	--color-bg-2-d: #232930;
+
+	--color-text-default: #040404;
+	--color-text-1: #040404;
+	--color-text-2: #515151;
+	--color-text-1-d: #ffffff;
+	--color-text-2-d: #d6d6d6;
+
+	--color-success-default: #00855f;
+	--color-success-1: #00855f;
+
+	/* Animation */
+	--animate-pump: pump 400ms linear;
+
+	/* Keyframes */
+	--keyframes-pump-0: scale(1);
+	--keyframes-pump-50: scale(1.3);
+	--keyframes-pump-100: scale(1);
+}
+
+/* Keyframes */
+@keyframes pump {
+	0% {
+		transform: var(--keyframes-pump-0);
+	}
+	50% {
+		transform: var(--keyframes-pump-50);
+	}
+	100% {
+		transform: var(--keyframes-pump-100);
+	}
+}
+
+/* Custom gradient utilities */
+@layer utilities {
+	.bg-gradient-purple-pink {
+		background-image: linear-gradient(
+			to bottom right,
+			#faf5ff 0%,
+			#fce7f3 100%
+		);
+	}
+
+	.dark .bg-gradient-purple-pink {
+		background-image: linear-gradient(
+			to bottom right,
+			#581c87 0%,
+			#831843 100%
+		);
+	}
+
+	.bg-gradient-purple-pink-light {
+		background-image: linear-gradient(
+			to bottom right,
+			#faf5ff 0%,
+			#fce7f3 100%
+		);
+	}
+
+	.bg-gradient-purple-pink-dark {
+		background-image: linear-gradient(
+			to bottom right,
+			#581c87 0%,
+			#831843 100%
+		);
+	}
+}
+
+:root {
+	font-family: "Montserrat", system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: var(--color-text-1);
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode overrides */
+.dark {
+	--color-bg-1: var(--color-bg-1-d);
+	--color-bg-2: var(--color-bg-2-d);
+	--color-text-1: var(--color-text-1-d);
+	--color-text-2: var(--color-text-2-d);
+	--color-primary-1: var(--color-primary-1-d);
+	--color-primary-2: var(--color-primary-2-d);
+	--color-secondary-1: var(--color-secondary-1-d);
+	--color-secondary-2: var(--color-secondary-2-d);
+}

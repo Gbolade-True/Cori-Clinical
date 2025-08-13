@@ -162,7 +162,7 @@ yarn test:run
 ```bash
 cd server
 source venv/bin/activate
-python -m pytest tests/
+python3.12 -m pytest tests/
 ```
 
 ## 🔧 Available Scripts

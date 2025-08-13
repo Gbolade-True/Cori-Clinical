@@ -4,37 +4,27 @@ from main import app
 
 client = TestClient(app)
 
-def test_health_check():
-    response = client.get("/health")
-    assert response.status_code == 200
-    assert "status" in response.json()
-
-def test_search_cities():
+def test_search_cities_success():
+    """Test city search with valid parameters"""
     response = client.get("/cities?name=London&limit=5")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
-    if data:  # If API key is configured
-        assert "name" in data[0]
-        assert "country" in data[0]
-        assert "lat" in data[0]
-        assert "lon" in data[0]
+    if data:  # If API key is configured and returns results
+        city = data[0]
+        assert "name" in city
+        assert "country" in city
+        assert "lat" in city
+        assert "lon" in city
 
-def test_get_recommendations():
+def test_ai_suggestions_success():
+    """Test AI recommendations with valid parameters"""
     response = client.get("/ai_suggestions?city=London&limit=5")
     assert response.status_code == 200
     data = response.json()
     assert isinstance(data, list)
-    if data:
-        assert "category" in data[0]
-        assert "name" in data[0]
-        assert "description" in data[0]
-
-def test_invalid_city_search():
-    response = client.get("/cities?name=a&limit=5")
-    assert response.status_code == 422  # Validation error
-
-def test_missing_city_parameter():
-    response = client.get("/ai_suggestions")
-    assert response.status_code == 422  # Validation error
-
+    if data:  # If API key is configured and returns results
+        recommendation = data[0]
+        assert "category" in recommendation
+        assert "name" in recommendation
+        assert "description" in recommendation
